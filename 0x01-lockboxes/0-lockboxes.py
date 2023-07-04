@@ -8,8 +8,7 @@ def canUnlockAll(boxes):
         return False
     if (len(boxes) == 1):
         return True
-
-    boxes = boxes.copy()
+  
     keys = set(boxes[0])
     keys.add(0)
     box_length = len(boxes)
