@@ -18,7 +18,7 @@ def canUnlockAll(boxes):
             index = 0
             found_new_key = False
         if keys.intersection([index]):
-            if len(set(boxes[index]).difference(keys)) > 0:
+            if set(boxes[index]).difference(keys):
                 found_new_key = True
                 keys.update(boxes[index])
 
