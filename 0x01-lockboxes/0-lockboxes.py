@@ -4,11 +4,6 @@
 
 def canUnlockAll(boxes):
     """Return True if all boxes can be opened, else return False"""
-    if (type(boxes) is not list):
-        return False
-    if (len(boxes) == 1):
-        return True
-  
     keys = set(boxes[0])
     keys.add(0)
     box_length = len(boxes)
