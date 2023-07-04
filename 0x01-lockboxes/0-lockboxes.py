@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Lockbox Solution"""
 
+
 def canUnlockAll(boxes):
     """Return True if all boxes can be opened, else return False"""
     if (type(boxes) is not list):
