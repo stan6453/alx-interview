@@ -14,6 +14,10 @@ def minOperations(n):
     fewest number of operations needed to result
     in exactly n H characters in the file.
     """
+
+    if n == 0 or n == 0:
+        return 0
+    
     sum_factors = 0
     factor = 1
 
