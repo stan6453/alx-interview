@@ -15,7 +15,7 @@ def minOperations(n):
     in exactly n H characters in the file.
     """
 
-    if n == 0 or n == 0:
+    if n < 2:
         return 0
 
     sum_factors = 0
