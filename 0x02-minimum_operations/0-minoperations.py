@@ -17,7 +17,7 @@ def minOperations(n):
 
     if n == 0 or n == 0:
         return 0
-    
+
     sum_factors = 0
     factor = 1
 
