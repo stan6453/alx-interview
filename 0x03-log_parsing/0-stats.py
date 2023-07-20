@@ -2,7 +2,6 @@
 """Parse a log file"""
 
 import sys
-import re
 
 status_codes = {
     "200": 0,
@@ -30,8 +29,6 @@ try:
         line_count += 1
         line = line[:-1]
         array = line.split()
-        method = str(array[-5][1:])
-        status_code = str(array[-2])
         file_size = 0
         try:
             file_size = int(array[-1])
@@ -39,8 +36,12 @@ try:
             pass
         # calc stats
         total_file_size += file_size
-        if status_code in status_codes:
-            status_codes[status_code] += 1
+        try:
+            status_code = str(array[-2])
+            if status_code in status_codes:
+                status_codes[status_code] += 1
+        except:
+            pass
 
         if (line_count % 10 == 0):
                     print_stats()
