@@ -32,8 +32,11 @@ log_pattern = (r'^(\d+\.\d+\.\d+\.\d+) - \[(\d{4}-\d{2}-\d{2} '
                r'([a-zA-Z0-9]+) (\d+)$'
                )
 
+
 def handle_sigint(signal, frame):
     print_stats()
+
+
 signal.signal(signal.SIGINT, handle_sigint)
 
 for line in sys.stdin:
