@@ -32,10 +32,13 @@ try:
         array = line.split()
         method = str(array[-5][1:])
         status_code = str(array[-2])
-        file_size = int(array[-1])
+        try:
+            file_size = int(array[-1])
+        except:
+            pass
         if method == "GET" and status_code.isnumeric():
             # calc stats
-            total_file_size += file_size
+            total_file_size += file_size or 0
             if status_code in status_codes:
                 status_codes[status_code] += 1
 
