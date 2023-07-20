@@ -27,7 +27,7 @@ def print_stats():
 
 
 log_pattern = (r'^(\d+\.\d+\.\d+\.\d+) - \[(\d{4}-\d{2}-\d{2} '
-               r'\d{2}:\d{2}:\d{2}\.\d+)\] "(\w+ [^"]+)" (\d{3}) (\d+)$')
+               r'\d{2}:\d{2}:\d{2}\.\d+)\] "(\w+ [^"]+)" ([a-zA-Z0-9]+) (\d+)$')
 
 
 try:
@@ -38,14 +38,14 @@ try:
             method = str(array[-5][1:])
             status_code = str(array[-2])
             file_size = int(array[-1])
+            if method == "GET" and status_code.isnumeric():
+                # calc stats
+                total_file_size += file_size
+                status_codes[status_code] += 1
+                line_count += 1
 
-            # calc stats
-            total_file_size += file_size
-            status_codes[status_code] += 1
-            line_count += 1
-
-            if (line_count % 10 == 0):
-                print_stats()
+                if (line_count % 10 == 0):
+                    print_stats()
 except KeyboardInterrupt:
     print_stats()
     sys.exit(0)
