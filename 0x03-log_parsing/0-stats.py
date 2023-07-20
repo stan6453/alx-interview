@@ -45,7 +45,7 @@ try:
                 total_file_size += file_size
                 status_codes[status_code] += 1
 
-                if (line_count % 10 == 0):
+        if (line_count % 10 == 0):
                     print_stats()
     print_stats()
 except KeyboardInterrupt:
