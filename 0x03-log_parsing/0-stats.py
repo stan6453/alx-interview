@@ -36,7 +36,8 @@ try:
         if method == "GET" and status_code.isnumeric():
             # calc stats
             total_file_size += file_size
-            status_codes[status_code] += 1
+            if status_code in status_codes:
+                status_codes[status_code] += 1
 
         if (line_count % 10 == 0):
                     print_stats()
