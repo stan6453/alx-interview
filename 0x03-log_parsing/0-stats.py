@@ -22,7 +22,8 @@ total_file_size = 0
 def print_stats():
     print("File size: {}".format(total_file_size))
     for key, value in status_codes.items():
-        print("{}: {}".format(key, value))
+        if value:
+            print("{}: {}".format(key, value))
 
 
 log_pattern = (r'^(\d+\.\d+\.\d+\.\d+) - \[(\d{4}-\d{2}-\d{2} '
