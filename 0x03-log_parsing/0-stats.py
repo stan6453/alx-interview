@@ -33,26 +33,20 @@ log_pattern = (r'^(\d+\.\d+\.\d+\.\d+) - \[(\d{4}-\d{2}-\d{2} '
 
 try:
     for line in sys.stdin:
+        line_count += 1
         line = line[:-1]
         array = line.split()
-        # if re.match(log_pattern, line):
-        method = str(array[-5][1:])
-        status_code = str(array[-2])
-        try:
+        if re.match(log_pattern, line):
+            method = str(array[-5][1:])
+            status_code = str(array[-2])
             file_size = int(array[-1])
-        except:
-            pass
-        # calc stats
-        total_file_size += file_size or 0
-        try:
-            if status_code in status_codes:
+            if method == "GET" and status_code.isnumeric():
+                # calc stats
+                total_file_size += file_size
                 status_codes[status_code] += 1
-        except:
-            pass
-        line_count += 1
 
-        if (line_count % 10 == 0):
-            print_stats()
+                if (line_count % 10 == 0):
+                    print_stats()
     print_stats()
 except KeyboardInterrupt:
     print_stats()
