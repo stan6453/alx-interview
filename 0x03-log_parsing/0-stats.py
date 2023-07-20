@@ -35,24 +35,24 @@ try:
     for line in sys.stdin:
         line = line[:-1]
         array = line.split()
-        if re.match(log_pattern, line):
-            method = str(array[-5][1:])
-            status_code = str(array[-2])
-            try:
-                file_size = int(array[-1])
-            except:
-                pass
-            # calc stats
-            total_file_size += file_size
-            try:
-                if status_code in status_codes:
-                    status_codes[status_code] += 1
-            except:
-                pass
-            line_count += 1
+        # if re.match(log_pattern, line):
+        method = str(array[-5][1:])
+        status_code = str(array[-2])
+        try:
+            file_size = int(array[-1])
+        except:
+            pass
+        # calc stats
+        total_file_size += file_size
+        try:
+            if status_code in status_codes:
+                status_codes[status_code] += 1
+        except:
+            pass
+        line_count += 1
 
-            if (line_count % 10 == 0):
-                print_stats()
+        if (line_count % 10 == 0):
+            print_stats()
 except KeyboardInterrupt:
     print_stats()
     raise
