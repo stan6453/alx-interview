@@ -43,7 +43,7 @@ try:
         except:
             pass
         # calc stats
-        total_file_size += file_size
+        total_file_size += file_size or 0
         try:
             if status_code in status_codes:
                 status_codes[status_code] += 1
