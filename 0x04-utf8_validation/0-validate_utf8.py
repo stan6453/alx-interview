@@ -2,14 +2,11 @@
 """UTF-8 validation module"""
 
 # format -> [bit_mask, value_after_masking, num_of_cont_bits_to_validate]
-head_bit_mask = [[128, 0, 0], [224, 192, 1], [240, 224, 2], [248, 240, 3],
-                 [252, 248, 4], [254, 252, 5], 0]
+head_bit_mask = [[128, 0, 0], [224, 192, 1], [240, 224, 2], [248, 240, 3], 0]
 
 
 def validUTF8(data):
     """UTF-8 validation function"""
-    if len(data) == 0:
-        return True
 
     def valid_continuation_bits(num):
         nonlocal byte_index
