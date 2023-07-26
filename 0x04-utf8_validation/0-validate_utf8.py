@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """UTF-8 validation module"""
 
-# format -> [mask, value_after_masking, num_of_cont_bit_to_validate]
+# format -> [bit_mask, value_after_masking, num_of_cont_bits_to_validate]
 head_bit_mask = [[128, 0, 0], [224, 192, 1], [240, 224, 2], [248, 240, 3],
                  [252, 248, 4], [254, 252, 5], [0, 0, 0]]
 
