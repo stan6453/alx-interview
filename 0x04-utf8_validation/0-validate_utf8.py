@@ -8,6 +8,8 @@ head_bit_mask = [[128, 0, 0], [224, 192, 1], [240, 224, 2], [248, 240, 3],
 
 def validUTF8(data):
     """UTF-8 validation function"""
+    if len(data) == 0 or type(data) is not list:
+        return False
 
     def valid_continuation_bits(num):
         nonlocal byte_index
