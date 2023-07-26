@@ -13,7 +13,7 @@ def validUTF8(data):
         nonlocal byte_index
         for count in range(num):
             byte_index += 1
-            if byte_index > len(data) or 192 & data[byte_index] != 128:
+            if byte_index >= len(data) or 192 & data[byte_index] != 128:
                 return False
         return True
 
