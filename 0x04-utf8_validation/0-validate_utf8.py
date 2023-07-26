@@ -25,7 +25,6 @@ def validUTF8(data):
             if data[byte_index] & item[0] == item[1]:
                 if not valid_continuation_bits(item[2]):
                     return False
-                else:
-                    break
+                break
         byte_index += 1
     return True
