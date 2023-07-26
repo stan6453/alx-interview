@@ -15,12 +15,16 @@ def validUTF8(data):
         nonlocal byte_index
         for count in range(num):
             byte_index += 1
+            if type(data[byte_index]) is not int:
+                return False
             if byte_index >= len(data) or 192 & data[byte_index] != 128:
                 return False
         return True
 
     byte_index = 0
     while byte_index < len(data):
+        if type(data[byte_index]) is not int:
+            return False
         for item in head_bit_mask:
             if item == 0:
                 return False
