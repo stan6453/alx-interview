@@ -19,6 +19,9 @@ def validUTF8(data):
 
     byte_index = 0
     while byte_index < len(data):
+        if data[byte_index] == 0 and byte_index == len(data)-1:
+            break
+            
         for item in head_bit_mask:
             if item == 0 or (data[byte_index] == 0 and byte_index != len(data)-1):
                 return False
