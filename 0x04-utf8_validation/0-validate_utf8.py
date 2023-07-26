@@ -11,11 +11,14 @@ def validUTF8(data):
 
     def valid_continuation_bits(num):
         nonlocal byte_index
-        for count in range(num):
-            byte_index += 1
-            if 192 & data[byte_index] != 128:
-                return False
-        return True
+        try:
+            for count in range(num):
+                byte_index += 1
+                if 192 & data[byte_index] != 128:
+                    return False
+            return True
+        except:
+            return False
 
     byte_index = 0
     while byte_index < len(data):
