@@ -3,7 +3,7 @@
 
 # format -> [bit_mask, value_after_masking, num_of_cont_bits_to_validate]
 head_bit_mask = [[128, 0, 0], [224, 192, 1], [240, 224, 2], [248, 240, 3],
-                 [252, 248, 4], [254, 252, 5], [0, 0, 0]]
+                 [252, 248, 4], [254, 252, 5], 0]
 
 
 def validUTF8(data):
@@ -20,7 +20,7 @@ def validUTF8(data):
     byte_index = 0
     while byte_index < len(data):
         for item in head_bit_mask:
-            if item[0] == 0:
+            if item == 0:
                 return False
             if item[0] & data[byte_index] == item[1]:
                 if not valid_continuation_bits(item[2]):
