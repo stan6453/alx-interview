@@ -1,31 +1,35 @@
 #!/usr/bin/python3
-"""UTF-8 validation module"""
-
-# format -> [bit_mask, value_after_masking, num_of_cont_bits_to_validate]
-head_bit_mask = [[128, 0, 0], [224, 192, 1], [240, 224, 2], [248, 240, 3],
-                 [252, 248, 4], [254, 252, 5], 0]
+"""0. UTF-8 Validation"""
 
 
 def validUTF8(data):
-    """UTF-8 validation function"""
+    """Determines if a given data set represents a
+    valid UTF-8 encoding"""
 
-    def valid_continuation_bits(num):
-        nonlocal byte_index
-        for count in range(num):
-            byte_index += 1
-            if byte_index >= len(data) or 192 & data[byte_index] != 128:
+    def check_next_bytes(num_bytes):
+        nonlocal i
+        for _ in range(num_bytes):
+            if i >= len(data) or (data[i] >> 6) != 0b10:
                 return False
+            i += 1
         return True
 
-    byte_index = 0
-    while byte_index < len(data):
-        for item in head_bit_mask:
-            if item == 0:
+    i = 0
+    while i < len(data):
+        byte = data[i]
+        if (byte >> 7) == 0:  # 1-byte character (0xxxxxxx)
+            i += 1
+        elif (byte >> 5) == 0b110:  # 2-byte character (110xxxxx)
+            if not check_next_bytes(1):
                 return False
-            if item[0] & data[byte_index] == item[1]:
-                if not valid_continuation_bits(item[2]):
-                    return False
-                else:
-                    break
-        byte_index += 1
+        elif (byte >> 4) == 0b1110:  # 3-byte character (1110xxxx)
+            if not check_next_bytes(2):
+                return False
+        elif (byte >> 3) == 0b11110:  # 4-byte character (11110xxx)
+            if not check_next_bytes(3):
+                return False
+        else:
+            return False
+        i += 1
+
     return True
