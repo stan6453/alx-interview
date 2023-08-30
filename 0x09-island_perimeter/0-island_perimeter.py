@@ -14,7 +14,6 @@ def island_perimeter(grid):
     row, column = find_island(grid, island_height, island_width)
     if (row, column) == (-1, -1):
         return 0
-
     visited.append((row, column))
     processing_queue.append((row, column))
 
