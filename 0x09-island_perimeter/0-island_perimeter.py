@@ -7,7 +7,7 @@ def island_perimeter(grid):
     island_height = len(grid)
     island_width = len(grid[0])
     visited = []
-    processing_queue = []
+    processing_stack = []
     perimeter = 0
 
     # step1: find a square of the island
@@ -15,12 +15,12 @@ def island_perimeter(grid):
     if (row, column) == (-1, -1):
         return 0
     visited.append((row, column))
-    processing_queue.append((row, column))
+    processing_stack.append((row, column))
 
-    # step2: use DFS to visit each square land in the is_land
+    # step2: use DFS to visit each square of land in the is_land
     # and calculate the perimeter
-    while len(processing_queue) != 0:
-        row, column = processing_queue.pop()
+    while len(processing_stack) != 0:
+        row, column = processing_stack.pop()
         # for y, x in [(up), (down),(left), (right)]
         for y, x in [(row-1, column),
                      (row+1, column), (row, column-1), (row, column+1)]:
@@ -29,7 +29,7 @@ def island_perimeter(grid):
                 perimeter += 1
             elif grid[y][x] == 1 and (y, x) not in visited:
                 visited.append((y, x))
-                processing_queue.append((y, x))
+                processing_stack.append((y, x))
     return perimeter
 
 
