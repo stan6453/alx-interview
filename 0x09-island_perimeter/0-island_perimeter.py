@@ -12,9 +12,9 @@ def island_perimeter(grid):
 
     # step1: find a square of the island
     row, column = find_island(grid, island_height, island_width)
-    if (row, column) == (-1,-1):
+    if (row, column) == (-1, -1):
         return 0
-    
+
     visited.append((row, column))
     processing_queue.append((row, column))
 
@@ -35,10 +35,10 @@ def island_perimeter(grid):
 
 
 def find_island(grid, island_height, island_width):
-    """returns the location of the first patch of land (1) in a sea of zeros (0)
-    returns (-1, -1) for the y and x coordinates if no island is found"""
+    """returns the (row, column) coordinate of the first patch of land
+    returns (-1, -1) for the (row, column) coordinates if no island is found"""
     for row in range(island_height):
         for column in range(island_width):
             if grid[row][column] == 1:
                 return row, column
-    return (-1,-1)
+    return (-1, -1)
