@@ -20,7 +20,6 @@ print("Winner: {}".format(isWinner(1, [0])))
 print("Winner: {}".format(isWinner(3, [0, 0, 0])))
 print("Winner: {}".format(isWinner(5, [1, 1, 1, 1, 1])))
 print("Winner: {}".format(isWinner(2, [0, 0, 0, 11,11,11])))
-print("Winner: {}".format(isWinner(2, [0, 0, 0, 11,11,11])))
 
 print('')
 
