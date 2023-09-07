@@ -37,7 +37,7 @@ def pickWinner(nums, player1, player2):
 
 def isWinner(x, nums):
     """Return the winner of the prime game"""
-    if (x == 0):
+    if (len(nums) == 0):
         return 'Ben'
     scores = {'Maria': 0, 'Ben': 0}
     for index in range(min(x, len(nums))):
