@@ -38,6 +38,8 @@ def pickWinner(nums, player1, player2):
 def isWinner(x, nums):
     """Return the winner of the prime game"""
     scores = {'Maria': 0, 'Ben': 0}
+    if (len(nums) == 0):
+        return 'Ben'
     for round in nums:
         winner = pickWinner(list(range(2, round+1)), 'Maria', 'Ben')
         scores[winner] += 1
