@@ -23,7 +23,7 @@ def filterPrime(prime_nums):
                     prime_veil += 1
                     found_prime = True
                     break
-        if found_prime == False:
+        if found_prime is False:
             break
         prime_pointer += 1
     return prime_nums[:prime_veil]
@@ -36,7 +36,7 @@ def pickWinner(nums, player1, player2):
 
 
 def isWinner(x, nums):
-    """Retuen the winner of the prime game"""
+    """Return the winner of the prime game"""
     scores = {'Maria': 0, 'Ben': 0}
     for index in range(x):
         winner = pickWinner(list(range(2, nums[index]+1)), 'Maria', 'Ben')
