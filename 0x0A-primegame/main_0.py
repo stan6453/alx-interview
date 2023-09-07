@@ -24,6 +24,8 @@ print("Winner: {}".format(isWinner(4, [2, 3, 5, 10])))
 print("Winner: {}".format(isWinner(6, [0, 0, 0, 11,11,11])))
 
 
+print("Winner: {}".format(isWinner(2, [0, 0, 0, 11,11,11])))
+
 print('')
 
 
